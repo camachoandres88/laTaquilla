@@ -1,0 +1,8 @@
+{
+	"security": {
+        "tokenLife" : 3600
+    },
+    "mongoose": {
+        "uri": "mongodb://inport-tickets:FKntSGUTc47S3cyx6QBM5ONnkvCXgz9GD.l6K5LbBj8-@ds042138.mongolab.com:42138/inport-tickets"
+    }
+}
