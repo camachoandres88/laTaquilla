@@ -6,10 +6,12 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var log = require('./libs/log')(module)
 var config  = require('./libs/config');
-
+var passport = require('passport');
 //initialize mongoose schemas
 require('./models/users');
 require('./models/tickets');
+
+var oauth2 = require('./libs/oauth2');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -33,7 +35,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(passport.initialize());
 
+require('./libs/auth');
+
+app.post('/oauth/token', oauth2.token);
 app.use('/', routes);
 app.use('/users', users);
 app.use('/api', api)

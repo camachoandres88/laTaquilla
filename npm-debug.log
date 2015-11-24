@@ -1,6 +1,8 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'start' ]
-2 info using npm@2.14.7
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Users\\jcamacho\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'start' ]
+2 info using npm@2.13.5
 3 info using node@v4.2.2
 4 verbose run-script [ 'prestart', 'start', 'poststart' ]
 5 info prestart inportTickets@0.0.0
@@ -9,20 +11,20 @@
 8 info inportTickets@0.0.0 Failed to exec start script
 9 verbose stack Error: inportTickets@0.0.0 start: `node ./bin/www`
 9 verbose stack Exit status 1
-9 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:214:16)
+9 verbose stack     at EventEmitter.<anonymous> (C:\Users\jcamacho\AppData\Roaming\npm\node_modules\npm\lib\utils\lifecycle.js:214:16)
 9 verbose stack     at emitTwo (events.js:87:13)
 9 verbose stack     at EventEmitter.emit (events.js:172:7)
-9 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:24:14)
+9 verbose stack     at ChildProcess.<anonymous> (C:\Users\jcamacho\AppData\Roaming\npm\node_modules\npm\lib\utils\spawn.js:24:14)
 9 verbose stack     at emitTwo (events.js:87:13)
 9 verbose stack     at ChildProcess.emit (events.js:172:7)
 9 verbose stack     at maybeClose (internal/child_process.js:818:16)
 9 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
 10 verbose pkgid inportTickets@0.0.0
-11 verbose cwd /Users/andrescamacho/Documents/inportTickets
-12 error Darwin 15.0.0
-13 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "start"
+11 verbose cwd C:\personalApps\inportTickets
+12 error Windows_NT 6.3.9600
+13 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Users\\jcamacho\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js" "start"
 14 error node v4.2.2
-15 error npm  v2.14.7
+15 error npm  v2.13.5
 16 error code ELIFECYCLE
 17 error inportTickets@0.0.0 start: `node ./bin/www`
 17 error Exit status 1
