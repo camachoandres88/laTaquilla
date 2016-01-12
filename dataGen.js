@@ -1,10 +1,11 @@
 var log                 = require('./libs/log')(module);
-var mongoose            = require('./models/users').mongoose;
-var UserModel           = require('./models/users').UserModel;
-var ClientModel         = require('./models/users').ClientModel;
-var AccessTokenModel    = require('./models/users').AccessTokenModel;
-var RefreshTokenModel   = require('./models/users').RefreshTokenModel;
+var mongoose 			= require( 'mongoose' );
+var UserModel           = mongoose.model('User');
+var ClientModel         = mongoose.model('Client');
+var AccessTokenModel    = mongoose.model('AccessToken');
+var RefreshTokenModel   = mongoose.model('RefreshToken');
 var faker               = require('Faker');
+
 
 UserModel.remove({}, function(err) {
     var user = new UserModel({ username: "andrey", password: "simplepassword" });

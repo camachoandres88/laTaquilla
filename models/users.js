@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var crypto = require('crypto');
+var log = require('../libs/log')(module);
 
 // User
 var User = new mongoose.Schema({
@@ -42,7 +43,7 @@ User.virtual('password')
 
 
 User.methods.checkPassword = function(password) {
-    return this.encryptPassword(password) === this.hashedPassword;
+   return this.encryptPassword(password) == this.hashedPassword;
 };
 
 
