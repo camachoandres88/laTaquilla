@@ -9,6 +9,21 @@ var User = new mongoose.Schema({
         unique: true,
         required: true
     },
+    firstName: {
+        type: String,
+        required: true
+    },
+    lastName: {
+        type: String,
+    },
+    isCompany :{
+        type:Boolean,
+        required: true
+    },
+    email:{
+        type: String,
+        required: true
+    },
     hashedPassword: {
         type: String,
         required: true

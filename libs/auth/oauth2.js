@@ -7,7 +7,7 @@ var mongoose            = require( 'mongoose' );
 var User           = mongoose.model('User');
 var Client       = mongoose.model('Client');
 var AccessToken   = mongoose.model('AccessToken');
-var RefreshToken  = mongoose.model('RefreshToken')
+var RefreshToken  = mongoose.model('RefreshToken');
 
 // create OAuth 2.0 server
 var aserver = oauth2orize.createServer();

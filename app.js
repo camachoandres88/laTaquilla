@@ -9,7 +9,8 @@ var config  = require('./libs/config');
 var passport = require('passport');
 //initialize mongoose schemas
 require('./models/users');
-require('./models/tickets');
+require('./models/orders');
+require('./models/events');
 
 var oauth2 = require('./libs/auth/oauth2');
 
