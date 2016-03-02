@@ -55,10 +55,10 @@ var generateTokens = function (data, done) {
     });
 };
 
-// Exchange username & password for access token.
-aserver.exchange(oauth2orize.exchange.password(function(client, username, password, scope, done) {
+// Exchange email & password for access token.
+aserver.exchange(oauth2orize.exchange.password(function(client, email, password, scope, done) {
     
-    User.findOne({ username: username }, function(err, user) {
+    User.findOne({ email: email }, function(err, user) {
          log.error("Encontro Usuario:" + user.userId);
         if (err) { 
             return done(err); 

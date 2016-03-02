@@ -79,9 +79,7 @@ var orderSchema = new mongoose.Schema({
     client :{ type: mongoose.Schema.ObjectId, ref: 'User' },
     orderStatus : { type: mongoose.Schema.ObjectId, ref: 'OrderStatus' },
     orderStatusHistory : [{ type: mongoose.Schema.Types.ObjectId, ref: 'OrderStatus' }],
-    tikets: [ticketSchema],
 });
-
 
 mongoose.model('Cart', cartSchema);
 mongoose.model('CartDetail', cartDetailSchema);

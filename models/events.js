@@ -1,13 +1,13 @@
 var mongoose = require('mongoose');
 
-var countrySchema = new Schema({
+var countrySchema = new mongoose.Schema({
     name: String,
     population: String
 });
 
-var citySchema = new Schema({
+var citySchema = new mongoose.Schema({
     name: String,
-    country: { type: Schema.ObjectId, ref: 'Country'}
+    country: { type: mongoose.Schema.ObjectId, ref: 'Country'}
 });
 
 var categorySchema = new mongoose.Schema({
@@ -38,7 +38,7 @@ var eventSchema = new mongoose.Schema({
     },
     location : {type: [Number], index: '2d'},
     category : { type: mongoose.Schema.ObjectId, ref: 'Category' },
-    owner: { type: mongoose.Schema.ObjectId, ref: 'User' },
+    owner: { type: mongoose.Schema.ObjectId, ref: 'User' , required: true},
     value :[{
         tittle : {type:String},
         description : {type:String},
@@ -49,10 +49,10 @@ var eventSchema = new mongoose.Schema({
     keywords : [{type: String}],
     country :  { type: mongoose.Schema.ObjectId, ref: 'Country' },
     city :   { type: mongoose.Schema.ObjectId, ref: 'City' },
-    address = {
+    address : {
         type: String
     },
-    date: { type: Date, default: Date.now },
+    date: { type: Date, default: Date.now }
 });
 
 mongoose.model('Country',countrySchema);

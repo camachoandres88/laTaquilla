@@ -9,6 +9,11 @@ var User = new mongoose.Schema({
         unique: true,
         required: true
     },
+    email:{
+        type: String,
+        required: true,
+         unique: true,
+    },
     firstName: {
         type: String,
         required: true
@@ -20,10 +25,7 @@ var User = new mongoose.Schema({
         type:Boolean,
         required: true
     },
-    email:{
-        type: String,
-        required: true
-    },
+
     hashedPassword: {
         type: String,
         required: true
