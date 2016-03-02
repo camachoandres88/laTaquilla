@@ -19,7 +19,6 @@ var users = require('./routes/users');
 var api = require('./routes/api');
 
 
-
 var mongoose = require('mongoose');                         //add for Mongo support
 mongoose.connect(config.get('mongoose:uri'));
 
