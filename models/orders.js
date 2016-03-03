@@ -49,6 +49,8 @@ var claimantsSchema =  new mongoose.Schema({
     code:{ type: String, required: true},
     identification: { type: String, required: true},
     name : { type: String, required: true},
+    last_name : { type: String, required: true},
+    email :{ type: String, required: true},
     status : { type: mongoose.Schema.ObjectId, ref: 'TicketStatus'}
 });
 
@@ -61,7 +63,7 @@ var ticketSchema = new mongoose.Schema({
     claimants : [claimantsSchema],
     value :{
         without_tax: { type : Number, required: true},
-        tiket_service: { type : Number, required: true},
+        ticket_service: { type : Number, required: true},
         tax: { type : Number, required: true}
     },
     owner: { type: mongoose.Schema.ObjectId, ref: 'User' }

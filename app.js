@@ -17,7 +17,8 @@ var oauth2 = require('./libs/auth/oauth2');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var api = require('./routes/api');
-
+var orders = require('./routes/orders');
+var events = require('./routes/events');
 
 var mongoose = require('mongoose');                         //add for Mongo support
 mongoose.connect(config.get('mongoose:uri'));
@@ -42,6 +43,8 @@ require('./libs/auth/auth');
 app.use('/', routes);
 app.use('/users', users);
 app.use('/api', api)
+app.use('/api/orders', orders)
+app.use('/api/events', events)
 app.use('/api/oauth/token', oauth2.token);
 
 // catch 404 and forward to error handler
