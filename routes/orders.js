@@ -98,7 +98,6 @@ router.route('/tickets')
 		        if (!tickets) { 
 		        	return res.status(status.OK).json({ message: 'No data found.'});
 		        }
-
 				return res.status(status.OK).json(tickets);
 			}
  		);
@@ -125,7 +124,5 @@ router.put('/setStateTicketClaimant',function (req, res) {
 		res.send({message:'Update data required.'});
 	}
 });
-
-
 
 module.exports = router;
