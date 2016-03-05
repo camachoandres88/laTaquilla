@@ -22,7 +22,6 @@ router.route('/events')
  		});
 });
 
-
 router.route('/events/:id')
 	.get(function(req, res){
  		EventModel.findById(req.params.id, function(err, eventFinded) {
@@ -37,7 +36,6 @@ router.route('/events/:id')
 			return res.status(status.OK).json(eventFinded);
  		});
 });
-
 
 router.post('/events',function (req, res) {
 	if(req.body.name && req.body.description && req.body.owner){

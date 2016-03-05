@@ -67,6 +67,26 @@ router.post('/ticketMasiveForEvent',function (req, res) {
 });
 
 
+router.route('/ticketsbyEvent/:idEvent')
+	.get(function(req, res){
+        if(req.params.idEvent){
+            TicketModel.find({event : req.params.idEvent}, function(err, tickets) {
+                    if (err) { 
+                        return res.status(status.INTERNAL_SERVER_ERROR).json({ error: err.errmsg});
+                    }
+
+                    if (!tickets) { 
+                        return res.status(status.OK).json({ message: 'No data found.'});
+                    }
+
+                    return res.status(status.OK).json(tickets);
+                }
+            );            
+        }else{
+            res.send({message:'Event id required.'});
+        }
+});
+
 
 router.route('/tickets')
 	.get(function(req, res){
@@ -84,32 +104,28 @@ router.route('/tickets')
  		);
 });
 
-
-router.route('/ticketsByClient/:email')
-	.get(function(req, res){
- 		UserModel.findOne({email : req.params.email}, function(err, user) {
-	 		if (err) { 
-	 			return res.status(status.INTERNAL_SERVER_ERROR).json({ error: err.errmsg});
-	        }
-
-	        if (!user) { 
-	        	return res.status(status.OK).json({ message: 'No data found.'});
-	        }
-
-			var events =  EventModel.find({owner : user._id}).select('_id');	
-
-			if(events){
-				var tikets =  TicketModel.find({}).where('event').in(events);
-				return res.status(status.OK).json(tikets);
-			};
- 		});
+router.put('/setStateTicketClaimant',function (req, res) {
+	if(req.body.status_id && req.body.claimant_id && req.body.ticket_id){
+	    TicketModel.findOneAndUpdate({ "_id": req.body.ticket_id, "claimants._id": req.body.claimant_id },
+            {
+                "$set": {
+                    "claimants.$.status": req.body.status_id
+                }               
+                
+            }, function(err, claimantModified) {
+	        if(err){
+	        	log.error(err);
+	        	return res.status(status.INTERNAL_SERVER_ERROR).send({message:err.errmsg});
+	        } 
+	        else{
+	        	 res.status(status.OK).json(claimantModified);
+	        } 
+	    });	
+	}else{
+		res.send({message:'Update data required.'});
+	}
 });
 
-
-router.route('/ticket/:id')
-	.get(function(req, res){
-		return res.send({message:'TODO get an existing ticket by using param ' + req.params.id});
-	});
 
 
 module.exports = router;
