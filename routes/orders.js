@@ -88,6 +88,23 @@ router.route('/ticketsbyEvent/:idEvent')
 });
 
 
+router.route('/ticketStatuses')
+	.get(function(req, res){
+        TicketStatusModel.find({}, function(err, statuses) {
+                if (err) { 
+                    return res.status(status.INTERNAL_SERVER_ERROR).json({ error: err.errmsg});
+                }
+
+                if (!statuses) { 
+                    return res.status(status.OK).json({ message: 'No data found.'});
+                }
+
+                return res.status(status.OK).json(statuses);
+            }
+        );    
+});
+
+
 router.route('/tickets')
 	.get(function(req, res){
  		TicketModel.find({}, function(err, tickets) {
@@ -105,9 +122,11 @@ router.route('/tickets')
 
 router.put('/setStateTicketClaimant',function (req, res) {
 	if(req.body.status_id && req.body.claimant_id && req.body.ticket_id){
+        var actualDate = Date.now();
 	    TicketModel.findOneAndUpdate({ "_id": req.body.ticket_id, "claimants._id": req.body.claimant_id },
             {
                 "$set": {
+                    "modified_at": actualDate,
                     "claimants.$.status": req.body.status_id
                 }               
                 
@@ -117,7 +136,7 @@ router.put('/setStateTicketClaimant',function (req, res) {
 	        	return res.status(status.INTERNAL_SERVER_ERROR).send({message:err.errmsg});
 	        } 
 	        else{
-	        	 res.status(status.OK).json(claimantModified);
+                res.status(status.OK).json(claimantModified);
 	        } 
 	    });	
 	}else{
