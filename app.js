@@ -21,7 +21,9 @@ var orders = require('./routes/orders');
 var events = require('./routes/events');
 
 var mongoose = require('mongoose');                         //add for Mongo support
-mongoose.connect(config.get('mongoose:uri'));
+//mongoose.connect(config.get('mongoose:uri'));
+mongoose.connect(process.env.CUSTOMCONNSTR_MONGOLAB_URI);
+
 
 var app = express();
 
